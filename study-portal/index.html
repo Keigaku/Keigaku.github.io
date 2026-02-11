@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗記サイト ポータル</title>
+    <meta name="description" content="統計・金融工学・情報処理技術者試験の暗記サイト集。用語一覧と一問一答クイズ。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-card: rgba(30, 30, 55, 0.7);
+            --text-primary: #e8e8f0;
+            --text-secondary: #a0a0b8;
+            --accent-1: #6C5CE7;
+            --accent-2: #00B894;
+            --accent-3: #E17055;
+            --accent-4: #0984E3;
+            --accent-5: #FDCB6E;
+            --accent-6: #A29BFE;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --radius-lg: 18px;
+            --radius-md: 12px;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 20%, rgba(108, 92, 231, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 184, 148, 0.08) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .portal {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+        }
+
+        .portal__header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .portal__title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 50%, var(--accent-5) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .portal__subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 40px 0 20px;
+            padding-left: 14px;
+            border-left: 4px solid var(--accent-1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title--ipa {
+            border-left-color: var(--accent-4);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            backdrop-filter: blur(16px);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--card-accent, var(--accent-1));
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card__icon {
+            font-size: 2rem;
+        }
+
+        .card__title {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .card__desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .card__meta {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-glass);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 14px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 640px) {
+            .portal__title {
+                font-size: 1.6rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="portal">
+        <header class="portal__header">
+            <h1 class="portal__title">📚 暗記サイト ポータル</h1>
+            <p class="portal__subtitle">用語・公式の一覧 ＆ 一問一答クイズ — 全13サイト</p>
+        </header>
+
+        <h2 class="section-title">📊 統計・金融</h2>
+        <div class="cards">
+            <a class="card" href="../stats-study/index.html" style="--card-accent:#6C5CE7">
+                <div class="card__icon">📐</div>
+                <div class="card__title">統計検定二級</div>
+                <div class="card__desc">記述統計、確率分布、推定・検定、回帰分析、ANOVA</div>
+                <div class="card__meta"><span>7カテゴリ</span><span>~120問</span></div>
+            </a>
+            <a class="card" href="../stats-study-grade1/index.html" style="--card-accent:#00B894">
+                <div class="card__icon">🎓</div>
+                <div class="card__title">統計検定一級</div>
+                <div class="card__desc">分布論、推定・検定理論、漸近論、多変量解析、確率過程、ベイズ統計</div>
+                <div class="card__meta"><span>9カテゴリ</span><span>~120問</span></div>
+            </a>
+            <a class="card" href="../stats-study-finance-beginner/index.html" style="--card-accent:#FDCB6E">
+                <div class="card__icon">💹</div>
+                <div class="card__title">金融工学・クオンツ【初級編】</div>
+                <div class="card__desc">金融市場の基礎、お金の時間的価値、リターンとリスク、デリバティブ入門、ポートフォリオ理論、債券基礎</div>
+                <div class="card__meta"><span>8カテゴリ</span><span>~80問</span></div>
+            </a>
+            <a class="card" href="../stats-study-finance/index.html" style="--card-accent:#E17055">
+                <div class="card__icon">💹</div>
+                <div class="card__title">金融工学・クオンツ【上級編】</div>
+                <div class="card__desc">確率解析、デリバティブ、グリークス、ポートフォリオ理論、リスク管理</div>
+                <div class="card__meta"><span>8カテゴリ</span><span>~80問</span></div>
+            </a>
+        </div>
+
+        <h2 class="section-title section-title--ipa">💻 情報処理技術者試験</h2>
+        <div class="cards">
+            <a class="card" href="../stats-study-ap/index.html" style="--card-accent:#FDCB6E">
+                <div class="card__icon">💻</div>
+                <div class="card__title">応用情報技術者</div>
+                <div class="card__desc">基礎理論、コンピュータ、DB/NW、セキュリティ、開発、マネジメント、ストラテジ</div>
+                <div class="card__meta"><span>8カテゴリ</span><span>~100問</span></div>
+            </a>
+            <a class="card" href="../study-st/index.html" style="--card-accent:#6C5CE7">
+                <div class="card__icon">🎯</div>
+                <div class="card__title">ITストラテジスト</div>
+                <div class="card__desc">IT戦略、経営戦略、ITガバナンス、システム企画、先端技術、財務分析</div>
+                <div class="card__meta"><span>6カテゴリ</span></div>
+            </a>
+            <a class="card" href="../study-sa/index.html" style="--card-accent:#00B894">
+                <div class="card__icon">🏗️</div>
+                <div class="card__title">システムアーキテクト</div>
+                <div class="card__desc">アーキテクチャ設計、要件定義、DB設計、開発プロセス、インフラ設計</div>
+                <div class="card__meta"><span>5カテゴリ</span></div>
+            </a>
+            <a class="card" href="../study-pm/index.html" style="--card-accent:#E17055">
+                <div class="card__icon">📋</div>
+                <div class="card__title">プロジェクトマネージャ</div>
+                <div class="card__desc">PMBOK、スコープ/スケジュール、EVM、リスク管理、アジャイルPM</div>
+                <div class="card__meta"><span>6カテゴリ</span></div>
+            </a>
+            <a class="card" href="../study-nw/index.html" style="--card-accent:#0984E3">
+                <div class="card__icon">🌐</div>
+                <div class="card__title">ネットワークスペシャリスト</div>
+                <div class="card__desc">OSI/TCP/IP、スイッチング/VLAN、ルーティング、セキュリティ</div>
+                <div class="card__meta"><span>6カテゴリ</span></div>
+            </a>
+            <a class="card" href="../study-db/index.html" style="--card-accent:#A29BFE">
+                <div class="card__icon">🗃️</div>
+                <div class="card__title">データベーススペシャリスト</div>
+                <div class="card__desc">正規化理論、SQL応用、トランザクション、物理設計、NoSQL</div>
+                <div class="card__meta"><span>6カテゴリ</span></div>
+            </a>
+            <a class="card" href="../study-es/index.html" style="--card-accent:#FDCB6E">
+                <div class="card__icon">🔧</div>
+                <div class="card__title">エンベデッドシステムスペシャリスト</div>
+                <div class="card__desc">組込み基礎、ハードウェア設計、RTOS、安全性設計、IoT通信</div>
+                <div class="card__meta"><span>5カテゴリ</span></div>
+            </a>
+            <a class="card" href="../study-sm/index.html" style="--card-accent:#6C5CE7">
+                <div class="card__icon">📘</div>
+                <div class="card__title">ITサービスマネージャ</div>
+                <div class="card__desc">ITIL 4、サービス運用、可用性/キャパシティ管理、メトリクス</div>
+                <div class="card__meta"><span>5カテゴリ</span></div>
+            </a>
+            <a class="card" href="../study-au/index.html" style="--card-accent:#00B894">
+                <div class="card__icon">🔍</div>
+                <div class="card__title">システム監査技術者</div>
+                <div class="card__desc">監査基礎、実施プロセス、IT統制、ガバナンス、新領域監査</div>
+                <div class="card__meta"><span>5カテゴリ</span></div>
+            </a>
+            <a class="card" href="../study-sc/index.html" style="--card-accent:#E17055">
+                <div class="card__icon">🛡️</div>
+                <div class="card__title">情報処理安全確保支援士</div>
+                <div class="card__desc">暗号技術、認証、NWセキュリティ、Webセキュリティ、フォレンジック、法制度</div>
+                <div class="card__meta"><span>6カテゴリ</span></div>
+            </a>
+        </div>
+
+        <footer class="footer">暗記サイト ポータル — ローカル学習用</footer>
+    </div>
+    <script src="../shared/nav.js"></script>
+</body>
+
+</html>

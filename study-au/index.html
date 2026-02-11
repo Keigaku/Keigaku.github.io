@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>システム監査技術者試験 暗記サイト</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1 class="header__title">🔍 システム監査技術者試験 暗記サイト</h1>
+            <p class="header__subtitle">監査プロセス・IT統制・ガバナンス — 用語の一覧 ＆ 一問一答クイズ</p>
+        </header>
+        <nav class="nav-tabs" id="nav-tabs"><button class="nav-tab active" data-view="reference"><span
+                    class="nav-tab__icon">📖</span>用語一覧</button><button class="nav-tab" data-view="quiz"><span
+                    class="nav-tab__icon">🎯</span>クイズ</button></nav>
+        <div class="view active" id="view-reference">
+            <div class="search-bar"><span class="search-bar__icon">🔍</span><input type="text" class="search-bar__input"
+                    id="search-input" placeholder="用語を検索..."></div>
+            <div id="reference-list"></div>
+        </div>
+        <div class="view" id="view-quiz">
+            <div class="quiz-controls" id="quiz-categories"></div>
+            <div class="score-bar" id="score-bar">
+                <div class="score-bar__item"><span class="score-bar__label">正解</span><span
+                        class="score-bar__value score-bar__value--correct" id="score-correct">0</span></div>
+                <div class="score-bar__item"><span class="score-bar__label">不正解</span><span
+                        class="score-bar__value score-bar__value--wrong" id="score-wrong">0</span></div>
+                <div class="score-bar__progress-bar">
+                    <div class="score-bar__progress-fill" id="score-progress" style="width:0%"></div>
+                </div>
+                <div class="score-bar__item"><span class="score-bar__label">正答率</span><span
+                        class="score-bar__value score-bar__value--rate" id="score-rate">--%</span></div>
+            </div>
+            <div class="quiz-card" id="quiz-card">
+                <div class="quiz-card__inner">
+                    <div class="quiz-card__category" id="quiz-category"></div>
+                    <div class="quiz-card__progress" id="quiz-progress"></div>
+                    <div class="quiz-card__question" id="quiz-question">カテゴリを選んでスタートしてください</div>
+                    <div class="quiz-card__answer-area">
+                        <div class="quiz-card__answer" id="quiz-answer">
+                            <div class="quiz-card__answer-label">正解</div>
+                            <div class="quiz-card__answer-text" id="quiz-answer-text"></div>
+                        </div>
+                        <div class="quiz-card__supplement" id="quiz-supplement">
+                            <div class="quiz-card__supplement-label">補足</div>
+                            <div class="quiz-card__supplement-text" id="quiz-supplement-text"></div>
+                        </div>
+                    </div>
+                    <div class="quiz-actions" id="quiz-actions"><button class="btn btn-primary" id="btn-show-answer">💡
+                            答えを見る</button></div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">システム監査技術者試験 暗記サイト — ローカル学習用</footer>
+    </div>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script src="../shared/nav.js"></script>
+</body>
+
+</html>
