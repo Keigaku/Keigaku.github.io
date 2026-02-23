@@ -14,11 +14,11 @@ window.Day127 = {
                 
                 <h3>離散型確率分布（飛び飛びの値）</h3>
                 <table class="styled-table text-sm">
-                    <thead><tr><th>分布名</th><th>どんな時に使う？</th><th>期待値 $$E(X)$$</th><th>分散 $$V(X)$$</th></tr></thead>
+                    <thead><tr><th>分布名</th><th>どんな時に使う？</th><th>期待値 $E(X)$</th><th>分散 $V(X)$</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>二項分布</strong><br>$$B(n, p)$$</td><td>成功確率 $p$ の試行を独立に $n$ 回繰り返したとき、成功する「回数」。<br><small>例：サイコロを10回投げて1が出る回数。</small></td><td>$$np$$</td><td>$$np(1-p)$$</td></tr>
-                        <tr><td><strong>ポアソン分布</strong><br>$$Po(\\lambda)$$</td><td>「ごくまれな事象」が、一定期間に起こる「回数」。<br><small>例：1日に工場で発生する不良品の数（平均 $\\lambda$ 個）。</small></td><td>$$\\lambda$$</td><td>$$\\lambda$$<br><span style="color:var(--accent-red); font-size:0.8rem;">※平均と分散が同じ！</span></td></tr>
-                        <tr><td><strong>幾何分布</strong></td><td>成功確率 $p$ の試行を繰り返し、<strong>初めて</strong>成功するまでの「失敗した回数」または「試行回数」。</td><td>$$1/p$$<br>(試行回数の場合)</td><td>$$(1-p)/p^2$$</td></tr>
+                        <tr><td><strong>二項分布</strong><br>$B(n, p)$</td><td>成功確率 $p$ の試行を独立に $n$ 回繰り返したとき、成功する「回数」。<br><small>例：サイコロを10回投げて1が出る回数。</small></td><td>$np$</td><td>$np(1-p)$</td></tr>
+                        <tr><td><strong>ポアソン分布</strong><br>$Po(\\lambda)$</td><td>「ごくまれな事象」が、一定期間に起こる「回数」。<br><small>例：1日に工場で発生する不良品の数（平均 $\\lambda$ 個）。</small></td><td>$\\lambda$</td><td>$\\lambda$<br><span style="color:var(--accent-red); font-size:0.8rem;">※平均と分散が同じ！</span></td></tr>
+                        <tr><td><strong>幾何分布</strong></td><td>成功確率 $p$ の試行を繰り返し、<strong>初めて</strong>成功するまでの「失敗した回数」または「試行回数」。</td><td>$1/p$<br>(試行回数の場合)</td><td>$(1-p)/p^2$</td></tr>
                     </tbody>
                 </table>
 
@@ -26,8 +26,8 @@ window.Day127 = {
                 <table class="styled-table text-sm">
                     <thead><tr><th>分布名</th><th>どんな時に使う？</th><th>特徴</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>正規分布</strong><br>$$N(\\mu, \\sigma^2)$$</td><td>自然界や社会で最もよく見られる、平均 $\\mu$ を中心とした釣鐘型の分布。</td><td>【標準化】<br>$$Z = (X - \\mu) / \\sigma$$ を計算すると、$N(0, 1)$ に変換され、標準正規分布表が使える。</td></tr>
-                        <tr><td><strong>一様分布</strong><br>$$U(a, b)$$</td><td>区間 $(a,b)$ でどこも同じ確率。<br><small>例：ルーレット、プログラミングのランダム関数。</small></td><td>期待値: $(a+b)/2$<br>分散: $(b-a)^2/12$</td></tr>
+                        <tr><td><strong>正規分布</strong><br>$N(\\mu, \\sigma^2)$</td><td>自然界や社会で最もよく見られる、平均 $\\mu$ を中心とした釣鐘型の分布。</td><td>【標準化】<br>$Z = (X - \\mu) / \\sigma$ を計算すると、$N(0, 1)$ に変換され、標準正規分布表が使える。</td></tr>
+                        <tr><td><strong>一様分布</strong><br>$U(a, b)$</td><td>区間 $(a,b)$ でどこも同じ確率。<br><small>例：ルーレット、プログラミングのランダム関数。</small></td><td>期待値: $(a+b)/2$<br>分散: $(b-a)^2/12$</td></tr>
                         <tr><td><strong>指数分布</strong></td><td>ポアソン分布に従う事象が、次に起こるまでの「間隔（時間）」。<br><small>例：次の客が来店するまでの時間。</small></td><td>「無記憶性」という特殊な性質を持つ（これまでの待ち時間が今後の待ち時間に影響しない）。</td></tr>
                     </tbody>
                 </table>
@@ -67,9 +67,14 @@ window.Day127 = {
             { question: '「無記憶性（Memoryless property）」を持つ確率分布はどれですか？', options: ['正規分布', 'ポアソン分布', '指数分布', '二項分布'], correct: 2, explanation: '「無記憶性」とは、「これまで待った時間は、これからさらに待つ時間の確率に影響を与えない（過去を記憶しない）」という性質です（例：電球が切れるまでの寿命、客が来るまでの時間など）。連続型確率分布の中でこの無記憶性を持つのは「指数分布」のみです。（離散型では幾何分布が該当します）。' }
         ]);
 
-        // MathJax rendering for dynamically added content
-        if (window.MathJax) {
-            MathJax.typesetPromise([container]);
+        // KaTeX rendering for math formulas
+        if (window.renderMathInElement) {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ]
+            });
         }
     }
 };

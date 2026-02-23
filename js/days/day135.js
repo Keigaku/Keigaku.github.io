@@ -54,9 +54,14 @@ window.Day135 = {
             { question: '【総合復習】統計検定1級（数理統計学）の世界において、「手元のデータ（サンプル）x から、未知のパラメータ θ を推定したい」とき、最も汎用的で強力なアプローチとされている「データが得られた事象の確率（密度）関数の積を θ の関数とみなし、これを最大化する θ を探す」手法を何と呼びますか？', options: ['最小二乗法 (OLS)', '最尤推定法 (MLE)', 'モーメント積率法 (Method of Moments)', '分位点回帰'], correct: 1, explanation: '「このデータが手元に集まったのは、あるパラメータθのもとで最も起こりやすかった（尤もらしかった）からであるはずだ」という逆算的な思想に基づくのが「最尤推定法 (Maximum Likelihood Estimation)」です。<br>数学的性質（一致性、漸近正規性、漸近有効性）が素晴らしいため、現代の統計的モデリングにおける推定量計算の王者として君臨しています。' }
         ]);
 
-        // MathJax rendering for dynamically added content
-        if (window.MathJax) {
-            MathJax.typesetPromise([container]);
+        // KaTeX rendering for math formulas
+        if (window.renderMathInElement) {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ]
+            });
         }
     }
 };

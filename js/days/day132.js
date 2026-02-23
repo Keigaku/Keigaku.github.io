@@ -15,7 +15,7 @@ window.Day132 = {
                 <h3>推定量の望ましい性質</h3>
                 <ul class="feature-list">
                     <li><strong>不偏性 (Unbiasedness):</strong><br>
-                    推定量の期待値（平均）が、真のパラメータに一致すること。<br><code>$ E[\\hat{\\theta}] = \\theta $</code></li>
+                    推定量の期待値（平均）が、真のパラメータに一致すること。<br>$ E[\\hat{\\theta}] = \\theta $</li>
                     <li><strong>一致性 (Consistency):</strong><br>
                     サンプルサイズ $n$ を無限に大きくすれば、推定量が真のパラメータに確率収束（完全に一致）すること。<br>
                     <small>（大数の法則のおかげで、標本平均は一致推定量になります）</small></li>
@@ -30,7 +30,7 @@ window.Day132 = {
                 <p>1級における点推定の究極の定理です。「どんないい不偏推定量を作っても、その分散（ばらつき）はある<strong>『限界（下限）』</strong>より小さくすることは絶対にできない」という宇宙の法則を示した不等式です。</p>
 
                 <div style="background: var(--bg-card); padding: 1.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); text-align:center;">
-                    <code>$$ V(\\hat{\\theta}) \\ge \\frac{1}{n I(\\theta)} $$</code>
+                    $$ V(\\hat{\\theta}) \\ge \\frac{1}{n I(\\theta)} $$
                 </div>
                 <p style="margin-top:1rem;">ここで $I(\\theta)$ は<strong>「フィッシャー情報量 (Fisher Information)」</strong>と呼ばれ、データがパラメータ $\\theta$ について持っている「情報の量」を表します（対数尤度関数の2階微分にマイナスをつけたものの期待値）。</p>
                 <p>この下限にぴったり一致する推定量（有効推定量）を見つけることができれば、「これ以上完璧な推定量は存在しない」と証明したことになります。</p>
@@ -64,9 +64,14 @@ window.Day132 = {
             { question: '「十分統計量 (Sufficient Statistic)」の概念についての説明で、最も適切なものはどれですか？', options: ['母平均と母分散が等しいことを示す統計量。', 'サンプルサイズが30以上であることを確認するための統計量。', 'データが持つパラメータ θ に関する情報を「まったくこぼさずに全て」含んでいるような統計量。これさえあれば元の生データは捨ててよい。', '外れ値（異常値）の影響を全く受けない（ロバストな）統計量。'], correct: 2, explanation: '十分統計量 T(X) とは、真のパラメータ θ を推定するために必要な情報（エッセンス）を1滴残らず圧縮して持っている統計量のことです。<br>例えば、正規分布のパラメータ推定において、「個別のデータの値（x1, x2...xn）」をすべて知らなくても、「標本平均」と「標本分散」という2つの数字（十分統計量）さえわかっていれば、θの推定には完全に「十分」である、といった性質です（フィッシャー・ネイマンの分解定理で証明します）。' }
         ]);
 
-        // MathJax rendering for dynamically added content
-        if (window.MathJax) {
-            MathJax.typesetPromise([container]);
+        // KaTeX rendering for math formulas
+        if (window.renderMathInElement) {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ]
+            });
         }
     }
 };

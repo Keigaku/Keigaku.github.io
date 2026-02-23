@@ -24,12 +24,12 @@ window.Day130 = {
                 <small>（帰無仮説が棄却されれば「男女によって購入意向に差がある」と言える）</small></p>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 ピアソンのカイ二乗($$\\chi^2$$)統計量</div>
+                    <div class="info-box-title">💡 ピアソンのカイ二乗($\\chi^2$)統計量</div>
                     <p>実測度数（O）と、もし完全に独立だとしたら期待される度数（E：期待度数）のズレを計算して足し合わせたものが検定統計量になります。</p>
                     <div style="text-align:center;">
-                        <code>$$ \\chi^2 = \\sum \\frac{(O - E)^2}{E} $$</code>
+                        $$ \\chi^2 = \\sum \\frac{(O - E)^2}{E} $$
                     </div>
-                    <p style="margin-top:0.5rem;">※独立性の検定（ $r$ 行 $\\times$ $c$ 列 の表）の自由度は、<strong>$$(r - 1)(c - 1)$$</strong> になります。（例：2行×3列なら自由度は 1×2=2）</p>
+                    <p style="margin-top:0.5rem;">※独立性の検定（ $r$ 行 $\\times$ $c$ 列 の表）の自由度は、<strong>$(r - 1)(c - 1)$</strong> になります。（例：2行×3列なら自由度は 1×2=2）</p>
                 </div>
             </div>
 
@@ -54,9 +54,14 @@ window.Day130 = {
             { question: '【総合復習】統計的仮説検定の「p値（p-value）」の正しい解釈はどれですか？', options: ['帰無仮説が正しい確率そのものを表す。', '対立仮説が正しい確率そのものを表す。', '帰無仮説が真であると仮定したもとで、今回得られたデータと同じか、それ以上に極端な（珍しい）結果が得られる確率を表す。', '第1種の誤りを犯す確率の最大許容値（有意水準）を表す。'], correct: 2, explanation: 'p値は決して「仮説が正しい確率」ではありません。前提として「帰無仮説（差はない）」が絶対に正しいとした世界線において、今回のような偏ったデータ（あるいはもっと偏ったデータ）が偶然たまたま観察されてしまう確率です。これが5%未満など（有意水準より小さい）極端に低ければ、「奇跡ではなく、前提（帰無仮説）が間違っているのだ」と判断し棄却します。' }
         ]);
 
-        // MathJax rendering for dynamically added content
-        if (window.MathJax) {
-            MathJax.typesetPromise([container]);
+        // KaTeX rendering for math formulas
+        if (window.renderMathInElement) {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ]
+            });
         }
     }
 };

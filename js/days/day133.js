@@ -17,7 +17,7 @@ window.Day133 = {
                 結論として、以下の<strong>尤度比（Likelihood Ratio）</strong>を使って棄却域を決めるのが、どんな方法よりも検出力が高くなる（最強である）と証明されました。</p>
 
                 <div style="background: var(--bg-card); padding: 1.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); text-align:center;">
-                    <code>$$ \\lambda = \\frac{ L(\\theta_1; x) }{ L(\\theta_0; x) } > k $$</code><br>
+                    $$ \\lambda = \\frac{ L(\\theta_1; x) }{ L(\\theta_0; x) } > k $$<br>
                     <small>（帰無仮説の時の尤度 より 対立仮説の時の尤度 の方が $k$ 倍以上大きければ棄却せよ）</small>
                 </div>
             </div>
@@ -28,7 +28,7 @@ window.Day133 = {
                 <p>全体のパラメータ空間で最大化した尤度（一番尤もらしい値）と、帰無仮説の条件という縛りを入れた状態で最大化した尤度の「比」をとります。縛りを入れたせいで著しく尤度が下がったなら、「帰無仮説の縛りは間違っている」として棄却します。</p>
 
                 <h3>ウィルクスの定理 (Wilks' Theorem)</h3>
-                <p>尤度比 $\\Lambda$ を使って作った検定統計量 <code>$-2 \\log \\Lambda$</code> は、サンプルサイズ $n$ が大きいとき、近似的に <strong>カイ二乗($\\chi^2$)分布</strong> に従うという、1級・実務における超強力な漸近理論です。</p>
+                <p>尤度比 $\\Lambda$ を使って作った検定統計量 $-2 \\log \\Lambda$ は、サンプルサイズ $n$ が大きいとき、近似的に <strong>カイ二乗($\\chi^2$)分布</strong> に従うという、1級・実務における超強力な漸近理論です。</p>
             </div>
 
             <div class="content-section animate-in stagger-2">
@@ -50,9 +50,14 @@ window.Day133 = {
             { question: '尤度比検定（LRT）、ワルド検定（Wald test）、および スコア検定（ラグランジュ乗数検定, LM test）の、いわゆる「3大検定」に関して、サンプルサイズ n が限りなく大きい（漸近的）状況では、これらの検定はどうなりますか？', options: ['LRTが常に最も高い検出力（1に近い）を持つ。', 'Wald検定のみがカイ二乗分布に従い、他は正規分布に従う。', '3つの検定手法から得られる検定統計量の値と棄却の結論は、局所的な対立仮説のもとで漸近的に同等（一致）になる。', 'スコア検定は計算不可となるため、LRTとWald検定のみが使われる。'], correct: 2, explanation: '統計検定1級レベルでは、尤度関数の形状（頂点の高さ＝LRT、頂点からの横の距離＝Wald、指定点での接線の傾き＝Score）のどこに注目するかで3つの検定が導出されますが、n が無限大に漸近する極限においては「この3つの検定方法は数学的に同値となり、同じχ²分布に従い、一致した結論を出す（漸近同等性）」という美しい事実が成立します。' }
         ]);
 
-        // MathJax rendering for dynamically added content
-        if (window.MathJax) {
-            MathJax.typesetPromise([container]);
+        // KaTeX rendering for math formulas
+        if (window.renderMathInElement) {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ]
+            });
         }
     }
 };

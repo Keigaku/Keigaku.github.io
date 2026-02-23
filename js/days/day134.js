@@ -20,7 +20,7 @@ window.Day134 = {
                 <h3>定常分布 (Stationary Distribution)</h3>
                 <p>マルコフ連鎖を永遠に（$n \\to \\infty$）繰り返したとき、ある特定の「確率の落ち着き先」に収束することがあります。この極限の確率分布ベクトル $\\pi$ を<strong>定常分布</strong>と呼びます。<br>
                 これは、次の方程式を解くことで求められます（固有値問題）。<br>
-                <code style="display:block; text-align:center; margin:0.5rem 0;">$$ \\pi P = \\pi \\quad (ただし \\sum \\pi_i = 1) $$</code>
+                <code style="display:block; text-align:center; margin:0.5rem 0;">$$ \\pi P = \\pi \\quad (ただし \\sum \\pi_i = 1) $$
                 </p>
                 <small>※「現在の分布 $\\pi$ に推移行列 $P$ を掛けても、やっぱり $\\pi$ のままで変わらない（定まっている）」状態のことです。</small>
             </div>
@@ -39,8 +39,8 @@ window.Day134 = {
                 <table class="styled-table text-sm">
                     <thead><tr><th>モデル名</th><th>概要</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>ARモデル</strong><br>(自己回帰)</td><td>「今日の値は、過去 $p$ 日間の自分の値の線形結合＋ホワイトノイズ」で表現。<br><code>$ y_t = c + \\phi_1 y_{t-1} + \\dots + \\varepsilon_t $</code></td></tr>
-                        <tr><td><strong>MAモデル</strong><br>(移動平均)</td><td>「今日の値は、現在と過去 $q$ 日間の『ホワイトノイズ（誤差）』の組み合わせ」で表現。<br><code>$ y_t = \\mu + \\varepsilon_t + \\theta_1 \\varepsilon_{t-1} + \\dots $</code></td></tr>
+                        <tr><td><strong>ARモデル</strong><br>(自己回帰)</td><td>「今日の値は、過去 $p$ 日間の自分の値の線形結合＋ホワイトノイズ」で表現。<br>$ y_t = c + \\phi_1 y_{t-1} + \\dots + \\varepsilon_t $</td></tr>
+                        <tr><td><strong>MAモデル</strong><br>(移動平均)</td><td>「今日の値は、現在と過去 $q$ 日間の『ホワイトノイズ（誤差）』の組み合わせ」で表現。<br>$ y_t = \\mu + \\varepsilon_t + \\theta_1 \\varepsilon_{t-1} + \\dots $</td></tr>
                         <tr><td><strong>ARMAモデル</strong></td><td>ARとMAを融合したモデル。</td></tr>
                         <tr><td><strong>ARIMAモデル</strong></td><td>非定常なデータに対し、「$d$ 回の差分」をとって定常データ（ARMA）に変換してから予測するモデル。</td></tr>
                     </tbody>
@@ -58,9 +58,14 @@ window.Day134 = {
             { question: '「今日の値は、『昨日の値（自己回帰）』と『昨日と今日の誤差（移動平均）』の両方の影響を受けて決まる」というモデルを表現する、代表的なボックス・ジェンキンス法の時系列モデルはどれですか？', options: ['GARCHモデル', 'VARモデル', 'ARMAモデル', 'ポアソン過程'], correct: 2, explanation: '「過去の自分の値」に回帰するAR（Autoregressive）モデルと、「過去の誤差（ホワイトノイズ）」の移動平均をとるMA（Moving Average）モデルを足し合わせたものが「ARMAモデル」です。<br>さらに、非定常なデータの場合は、差分（I: Integrated）をとって定常にしてからARMAを適用する「ARIMAモデル」が使われます。VARは多変量に対する拡張、GARCHはボラティリティ（分散）のモデリングに使われます。' }
         ]);
 
-        // MathJax rendering for dynamically added content
-        if (window.MathJax) {
-            MathJax.typesetPromise([container]);
+        // KaTeX rendering for math formulas
+        if (window.renderMathInElement) {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ]
+            });
         }
     }
 };

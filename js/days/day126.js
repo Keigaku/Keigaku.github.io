@@ -16,7 +16,7 @@ window.Day126 = {
                 <table class="styled-table text-sm">
                     <thead><tr><th>名称</th><th>意味</th><th>特徴と注意点</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>平均値 (Mean)</strong></td><td>全データの合計 ÷ データ数 ($$\\bar{x}$$)</td><td>極端な値（外れ値）の影響を<strong>強く受ける</strong>。</td></tr>
+                        <tr><td><strong>平均値 (Mean)</strong></td><td>全データの合計 ÷ データ数 ($\\bar{x}$)</td><td>極端な値（外れ値）の影響を<strong>強く受ける</strong>。</td></tr>
                         <tr><td><strong>中央値 (Median)</strong></td><td>データを大きさ順に並べたときの真ん中の値</td><td>外れ値の影響を受けにくい（ロバスト性）。所得分布などでは平均より実態を表す。</td></tr>
                         <tr><td><strong>最頻値 (Mode)</strong></td><td>データの中で最も頻繁に現れる値</td><td>質的データ（血液型やアンケートの選択肢）にも使える。</td></tr>
                     </tbody>
@@ -24,16 +24,16 @@ window.Day126 = {
 
                 <h3>散布度（データのばらつき）</h3>
                 <ul class="feature-list">
-                    <li><strong>分散 ($$s^2$$)</strong>: 各データが平均からどれくらい離れているか（偏差）の2乗の平均。<br><code>$$ s^2 = \\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 $$</code></li>
-                    <li><strong>標準偏差 ($$s$$)</strong>: 分散の正の平方根。データの単位が元のデータと同じになり直感的に分かりやすい。<strong>分散が「面積」なら標準偏差は「長さ」。</strong></li>
-                    <li><strong>四分位範囲 (IQR)</strong>: データを4等分したときの 第3四分位数(Q3) - 第1四分位数(Q1)。外れ値に強いばらつきの指標。「箱ひげ図」の箱の長さに相当。</li>
+                    <li><strong>分散 ($s^2$)</strong>: 各データが平均からどれくらい離れているか（偏差）の2乗の平均。$$ s^2 = \\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 $$</li>
+                    <li><strong>標準偏差 ($s$)</strong>: 分散の正の平方根。データの単位が元のデータと同じになり直感的に分かりやすい。<strong>分散が「面積」なら標準偏差は「長さ」。</strong></li>
+                    <li><strong>四分位範囲 (IQR)</strong>: データを4等分したときの $Q_3 - Q_1$。外れ値に強いばらつきの指標。「箱ひげ図」の箱の長さに相当。</li>
                 </ul>
 
                 <h3>2変数の記述統計</h3>
                 <p>2つのデータ（XとY）の関係性を見ます。</p>
                 <ul>
-                    <li><strong>共分散 ($$S_{xy}$$)</strong>: 右上がりか右下がりかの「方向」を示す。単位に依存するため「強さ」は測れない。</li>
-                    <li><strong>相関係数 ($$r$$)</strong>: 共分散を各々の標準偏差で割ったもの。<strong>-1 から 1</strong> までの値をとる。単位に依存せず、直線的な関係の「強さ」を測る。※「因果関係」を意味するものではない（擬似相関に注意）。</li>
+                    <li><strong>共分散 ($S_{xy}$)</strong>: 右上がりか右下がりかの「方向」を示す。単位に依存するため「強さ」は測れない。</li>
+                    <li><strong>相関係数 ($r$)</strong>: 共分散を各々の標準偏差で割ったもの。<strong>-1 から 1</strong> までの値をとる。単位に依存せず、直線的な関係の「強さ」を測る。※「因果関係」を意味するものではない（擬似相関に注意）。</li>
                 </ul>
             </div>
 
@@ -42,16 +42,16 @@ window.Day126 = {
                 <p>起こり得る事象の可能性を数学的に扱います。金融工学の文脈では、不確実性（リスク）をモデル化する基礎となります。</p>
 
                 <h3>条件付き確率と乗法定理</h3>
-                <p>事象Bが起こったという条件のもとで、事象Aが起こる確率を <strong>$$P(A|B)$$</strong> と書きます。</p>
+                <p>事象Bが起こったという条件のもとで、事象Aが起こる確率を <strong>$P(A|B)$</strong> と書きます。</p>
                 <div style="background: var(--bg-card); padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); text-align:center;">
-                    <code>$$ P(A|B) = \\frac{P(A \\cap B)}{P(B)} $$</code><br><br>
-                    変形して乗法定理: <code>$$ P(A \\cap B) = P(A|B)P(B) $$</code>
+                    $$ P(A|B) = \\frac{P(A \\cap B)}{P(B)} $$
+                    <p style="margin-top:0.5rem;">変形して乗法定理: $P(A \\cap B) = P(A|B)P(B)$</p>
                 </div>
 
                 <h3>ベイズの定理 (Bayes' Theorem)</h3>
                 <p>結果から原因を推測する（事後確率を求める）定理。統計検定2級で必ず出題される重要トピックです。</p>
                 <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-md); text-align: center; margin-bottom:1rem;">
-                    <code>$$ P(原因A|結果B) = \\frac{P(結果B|原因A)P(原因A)}{P(結果B)} $$</code>
+                    $$ P(\\text{原因}A|\\text{結果}B) = \\frac{P(\\text{結果}B|\\text{原因}A) \\cdot P(\\text{原因}A)}{P(\\text{結果}B)} $$
                 </div>
                 <div class="info-box tip">
                     <div class="info-box-title">💡 検査の陽性・陰性問題の解き方</div>
@@ -70,9 +70,14 @@ window.Day126 = {
             { question: '箱ひげ図（Box-plot）において、箱の「下端」と「上端」はそれぞれ何を表していますか？', options: ['最小値 と 最大値', '第1四分位数(Q1) と 第3四分位数(Q3)', '平均値-標準偏差 と 平均値+標準偏差', '中央値 と 最大値'], correct: 1, explanation: '箱ひげ図の「箱」の部分は、データの下から25%に位置する「第1四分位数（Q1）」と、75%に位置する「第3四分位数（Q3）」で構成されます。箱の中の線は「中央値（第2四分位数）」です。箱の長さ（Q3 - Q1）を四分位範囲（IQR）と呼びます。ひげの端は通常、最小値・最大値（外れ値を除外した範囲）を示します。' }
         ]);
 
-        // MathJax rendering for dynamically added content
-        if (window.MathJax) {
-            MathJax.typesetPromise([container]);
+        // KaTeX rendering for math formulas
+        if (window.renderMathInElement) {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ]
+            });
         }
     }
 };

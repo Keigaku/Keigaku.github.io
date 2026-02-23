@@ -19,7 +19,7 @@ window.Day131 = {
                     <h4 style="color:var(--accent-blue); margin-top:0;">変数変換の公式 (1次元)</h4>
                     <p>連続確率変数 $X$ の確率密度関数（pdf）を $f_X(x)$ とし、$y = g(x)$ が単調な関数であるとき、$Y$ の確率密度関数 $f_Y(y)$ は以下で与えられます。</p>
                     <div style="text-align:center;">
-                        <code>$$ f_Y(y) = f_X(g^{-1}(y)) \\left| \\frac{dx}{dy} \\right| $$</code>
+                        $$ f_Y(y) = f_X(g^{-1}(y)) \\left| \\frac{dx}{dy} \\right| $$
                     </div>
                     <p style="margin-top:1rem;"><small>ヤコビアン（微分係数の絶対値） $\\left| \\frac{dx}{dy} \\right|$ を掛けるのを忘れないことが最大のポイントです。これが多次元になると行列式（ヤコビアン行列のデターミナント）に拡張されます。</small></p>
                 </div>
@@ -43,7 +43,7 @@ window.Day131 = {
                 <div class="info-box important">
                     <div class="info-box-title">🚨 MGFの超重要性質（再生性）</div>
                     <p>独立な確率変数 $X$ と $Y$ の和 $Z = X + Y$ のMGFは、それぞれの積になる。<br>
-                    <code>$$ M_{X+Y}(t) = M_X(t) \\times M_Y(t) $$</code><br>
+                    $$ M_{X+Y}(t) = M_X(t) \\times M_Y(t) $$<br>
                     これを利用すると、「正規分布と正規分布の和もまた正規分布になる（再生性）」等を一瞬で証明できます。</p>
                 </div>
             </div>
@@ -59,9 +59,14 @@ window.Day131 = {
             { question: '確率変数 X1, X2,..., Xn が互いに独立に「標準正規分布 N(0,1)」に従うとき、それぞれの「2乗の和（ X1² + X2² + ... + Xn² ）」が従う確率分布はどれですか？', options: ['自由度 n の t分布', '自由度 n のカイ二乗分布 (χ²分布)', '自由度 (n-1) のF分布', '平均 0、分散 n の正規分布 N(0,n)'], correct: 1, explanation: '標準正規分布 N(0,1) に従う独立な確率変数を「2乗して足し合わせたもの」は『自由度 n の カイ二乗(χ²)分布』に従います。<br>1級ではさらに、この χ²分布 がガンマ分布の特殊な形（Gamma(n/2, 1/2)）であることもMGF を使った変数変換から証明できるようになる必要があります。後の章の「検定」で絶対に避けられない最重要の分布です。' }
         ]);
 
-        // MathJax rendering for dynamically added content
-        if (window.MathJax) {
-            MathJax.typesetPromise([container]);
+        // KaTeX rendering for math formulas
+        if (window.renderMathInElement) {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ]
+            });
         }
     }
 };
