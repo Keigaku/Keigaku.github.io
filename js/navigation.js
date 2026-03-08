@@ -154,7 +154,24 @@ const Navigation = {
         { num: 132, title: '推定理論と最尤推定', icon: '🔍', desc: '一致性・有効性、クラメール・ラオの下限、最尤推定', tags: ['統計1級', '推定理論', '最尤推定'], section: 'statistics_mastery' },
         { num: 133, title: '検定理論と漸近理論', icon: '⚖️', desc: 'ネイマン・ピアソンの補題、尤度比検定、デルタ法', tags: ['統計1級', '検定理論', '尤度比検定'], section: 'statistics_mastery' },
         { num: 134, title: 'マルコフ連鎖と時系列', icon: '⛓️', desc: '推移確率、定常分布、弱定常性、AR/MA/ARIMAモデル', tags: ['統計1級', '確率過程', '時系列分析'], section: 'statistics_mastery' },
-        { num: 135, title: '多変量解析と総合', icon: '🌐', desc: '主成分分析(PCA)、判別分析、1級総合キャップストーン', tags: ['統計1級', '多変量解析', 'PCA'], section: 'statistics_mastery' }
+        { num: 135, title: '多変量解析と総合', icon: '🌐', desc: '主成分分析(PCA)、判別分析、1級総合キャップストーン', tags: ['統計1級', '多変量解析', 'PCA'], section: 'statistics_mastery' },
+
+        // --- 🏦 Be-DFS 開発責任者研修 (Day 136-150) ---
+        { num: 136, title: 'Be-DFSと証券IT全体像', icon: '🏦', desc: 'Be-DFSの位置づけ、フロント→ミドル→バック、連携システム群', tags: ['Be-DFS', '全体像', 'アーキテクチャ'], section: 'bedfs_mastery' },
+        { num: 137, title: 'OTCデリバティブの基礎', icon: '📜', desc: '取引所 vs OTC、ISDAマスター契約、トレードライフサイクル', tags: ['OTC', 'ISDA', 'ライフサイクル'], section: 'bedfs_mastery' },
+        { num: 138, title: '金利スワップ(IRS)の仕組み', icon: '💱', desc: '固定 vs 変動、Day Count、LIBOR廃止とRFR移行', tags: ['IRS', 'Day Count', 'RFR'], section: 'bedfs_mastery' },
+        { num: 139, title: '通貨スワップ・ベーシススワップ', icon: '🌍', desc: 'クロスカレンシースワップ、テナーベーシス、元本交換', tags: ['CCS', 'ベーシス', '元本交換'], section: 'bedfs_mastery' },
+        { num: 140, title: 'エクイティデリバティブとTRS', icon: '📈', desc: 'Total Return Swap、リターンレグとファンディングレグ', tags: ['TRS', 'エクイティ', 'リターン'], section: 'bedfs_mastery' },
+        { num: 141, title: 'PSWAP (Portfolio Swap) とPB', icon: '📊', desc: 'ポートフォリオスワップ、プライムブローカレッジ、日次リバランス', tags: ['PSWAP', 'PB', 'リバランス'], section: 'bedfs_mastery' },
+        { num: 142, title: 'エキゾチック商品とOTCの多様性', icon: '🎨', desc: 'バリアオプション、CDS、商品テンプレート設計', tags: ['エキゾチック', 'CDS', 'テンプレート'], section: 'bedfs_mastery' },
+        { num: 143, title: 'ディスカウントファクターとカーブ構築', icon: '📐', desc: 'DF、イールドカーブ、ブートストラップ法、マルチカーブ', tags: ['DF', 'カーブ', 'ブートストラップ'], section: 'bedfs_mastery' },
+        { num: 144, title: 'プライシングとグリッドコンピューティング', icon: '🖥️', desc: '時価評価、モンテカルロ法、グリッド計算、EODバッチ', tags: ['プライシング', 'グリッド', 'MtM'], section: 'bedfs_mastery' },
+        { num: 145, title: 'Greeks・リスク計算と感応度', icon: '📊', desc: 'Delta/Gamma/Vega/Theta、DV01、バンピング法、AAD', tags: ['Greeks', 'DV01', 'AAD'], section: 'bedfs_mastery' },
+        { num: 146, title: 'ブッキングフローとデータモデル', icon: '📝', desc: 'トレードステータス管理、レグ配列、外部IF設計', tags: ['ブッキング', 'データモデル', 'STP'], section: 'bedfs_mastery' },
+        { num: 147, title: 'フロントUI設計とトレーダーUX', icon: '🖥️', desc: 'ブロッター、リアルタイム更新、What-If計算、OpenFin', tags: ['UI', 'UX', 'ブロッター'], section: 'bedfs_mastery' },
+        { num: 148, title: 'バックオフィス連携と決済', icon: '🔗', desc: '照合、確認書、SSI、フロント/バック照合', tags: ['バック連携', '照合', 'SSI'], section: 'bedfs_mastery' },
+        { num: 149, title: 'マーケットデータと規制対応', icon: '📡', desc: 'データフィード、静的データ管理、EMIR/MiFID II/JFSA', tags: ['マーケットデータ', '規制', 'EMIR'], section: 'bedfs_mastery' },
+        { num: 150, title: '運用・障害対応とキャップストーン', icon: '⚙️', desc: 'EOD/BODバッチ、障害パターン、監視、Be-DFS総括', tags: ['運用', '障害対応', '総括'], section: 'bedfs_mastery' }
     ],
 
     currentDay: null,
@@ -168,7 +185,7 @@ const Navigation = {
 
     renderNavList() {
         const navList = document.getElementById('nav-list');
-        const sectionLabels = { _default: '📊 金融工学入門', bonus: '📚 ボーナス研修', advanced: '📐 応用金融工学', pm: '📋 PM研修', leadership: '🌟 リーダーシップ', career: '🚀 キャリア発展', executive_prep: '🏛️ 経営幹部候補研修', executive: '👔 経営層研修', toeic: '🎯 TOEIC 950点突破', tech_enhance: '🔧 技術スキル強化', pro_skills: '💎 プロフェッショナルスキル', world_knowledge: '🌍 世界の常識', liberal_arts: '📖 リベラルアーツ', data_science: '📊 データサイエンス', system_design: '🏗️ システム設計', financial_practice: '💰 金融実务', business_skills: '🤝 ビジネス実践', advanced_tech: '⚡ 先端技術', capstone: '🎓 総合演習', daily_routine: '🕐 出来る社員の1日', pmp_mastery: '🏆 PMP・金融PM実践', statistics_mastery: '🧮 統計検定 マスター' };
+        const sectionLabels = { _default: '📊 金融工学入門', bonus: '📚 ボーナス研修', advanced: '📐 応用金融工学', pm: '📋 PM研修', leadership: '🌟 リーダーシップ', career: '🚀 キャリア発展', executive_prep: '🏛️ 経営幹部候補研修', executive: '👔 経営層研修', toeic: '🎯 TOEIC 950点突破', tech_enhance: '🔧 技術スキル強化', pro_skills: '💎 プロフェッショナルスキル', world_knowledge: '🌍 世界の常識', liberal_arts: '📖 リベラルアーツ', data_science: '📊 データサイエンス', system_design: '🏗️ システム設計', financial_practice: '💰 金融実务', business_skills: '🤝 ビジネス実践', advanced_tech: '⚡ 先端技術', capstone: '🎓 総合演習', daily_routine: '🕐 出来る社員の1日', pmp_mastery: '🏆 PMP・金融PM実践', statistics_mastery: '🧮 統計検定 マスター', bedfs_mastery: '🏦 Be-DFS 開発責任者研修' };
         // Group days by section
         const groups = [];
         let currentGroup = null;
